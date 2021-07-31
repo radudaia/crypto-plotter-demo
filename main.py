@@ -5,6 +5,8 @@
 import requests
 import csv
 import time
+from pathlib import Path
+
 
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
@@ -14,31 +16,7 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
-
-
-    '''
-    headers = ['timestamp', 'rateUsd']
-
-    with open('data.csv', 'a') as fd:
-
-        writer = csv.writer(fd)
-        writer.writerow(headers)
-
-        while True:
-
-            try:
-                response = requests.get("http://api.coincap.io/v2/rates/bitcoin")
-                d = response.json()
-                writer.writerow([d['timestamp'], d['data']['rateUsd']])
-            finally:
-                fd.flush()
-                time.sleep(5)
-
-
-    '''
-
-
-
+    Path("data").mkdir(parents=True, exist_ok=True)
 
     coins = ['bitcoin', 'ethereum', 'xrp']
 
@@ -46,7 +24,7 @@ if __name__ == '__main__':
 
     for coin in coins:
 
-        with open(f'{coin}.csv', 'w') as fd:
+        with open(f'data/{coin}.csv', 'w') as fd:
             writer = csv.writer(fd)
 
             response = requests.get(f"http://api.coincap.io/v2/assets/{coin}/history?interval=d1")
