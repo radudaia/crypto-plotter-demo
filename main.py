@@ -31,7 +31,7 @@ if __name__ == '__main__':
             d = response.json()
 
             for entry in d['data']:
-                writer.writerow([entry['time'], entry['priceUsd']])
+                writer.writerow([entry['date'], entry['priceUsd']])
             fd.flush()
 
 
