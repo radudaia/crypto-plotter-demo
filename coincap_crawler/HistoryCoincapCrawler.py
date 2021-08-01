@@ -11,7 +11,14 @@ class HistoryCoincapCrawler(CoincapCrawler):
     def get(self):
         Path("data").mkdir(parents=True, exist_ok=True)
 
-        coins = ['bitcoin', 'ethereum', 'xrp']
+        coins = ['bitcoin',
+                 'ethereum',
+                 'xrp',
+                 'tether',
+                 'dogecoin',
+                 'bitcoin-cash',
+                 'litecoin',
+                 'stellar']
 
         headers = ['time', 'priceUsd']
 
@@ -23,6 +30,9 @@ class HistoryCoincapCrawler(CoincapCrawler):
                 response = requests.get(f"http://api.coincap.io/v2/assets/{coin}/history?interval=d1")
                 d = response.json()
 
-                for entry in d['data']:
-                    writer.writerow([entry['date'], entry['priceUsd']])
+                try:
+                    for entry in d['data']:
+                        writer.writerow([entry['date'], entry['priceUsd']])
+                except:
+                    print(f"Failed to retrieve 'data' field for coin: {coin}")
                 fd.flush()
