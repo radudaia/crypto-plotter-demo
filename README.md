@@ -1,29 +1,14 @@
-# README #
+# Crypto Plotter Demo App #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+The purpose of this demo application is to show how we can use Python and Bash scripting to interact with CoinCap's API and plot data regarding cryptocurrency.
 
-### What is this repository for? ###
+### Setup ###
+Before running the project, make sure to install the requirements via the following command:\
+`pip3 install -r requirements.txt`
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+### Running the project ###
+For simplicity, a makefile has been provided to run the project.\
+You can use the following commands:
+- to collect data: `make data`
+- to plot data `make plot`
+- to cleanup: `make clean`
